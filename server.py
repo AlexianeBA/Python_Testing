@@ -1,6 +1,7 @@
 import json
 from flask import Flask,render_template,request,redirect,flash,url_for
 
+app = Flask(__name__)
 
 def loadClubs():
     with open('clubs.json') as c:
@@ -57,3 +58,7 @@ def purchasePlaces():
 @app.route('/logout')
 def logout():
     return redirect(url_for('index'))
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
