@@ -14,5 +14,14 @@
       ><input type="number" name="places" id="" />
       <button type="submit">Book</button>
     </form>
+    {% with messages = get_flashed_messages()%} {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <li class="{% if 'error' in message %}error{% else %}success{% endif %}">
+        {{ message }}
+      </li>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
   </body>
 </html>
