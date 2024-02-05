@@ -43,7 +43,6 @@ def book(competition,club):
     foundClub = [c for c in clubs if c['name'] == club][0]
     foundCompetition = [c for c in competitions if c['name'] == competition][0]
     
-    
     if foundClub and foundCompetition:
         return render_template('booking.html',club=foundClub,competition=foundCompetition)
     else:
@@ -66,8 +65,10 @@ def purchasePlaces():
         flash("You cannot reserve more than 12 places per competition!")
     elif dateOfTheDay > dateOfCompetition:
         flash("You cannot reserve for this competition because the date has passed")
+    
     else:
-        competition['numberOfPlaces'] = int(competition['numberOfPlaces'])-placesRequired
+        club['points'] = int(numberOfPoints - placesRequired)
+        competition['numberOfPlaces'] = int(competition['numberOfPlaces'])
         flash('Great-booking complete!')
     return render_template('welcome.html', club=club, competitions=competitions)
 
