@@ -23,7 +23,8 @@ clubs = loadClubs()
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    club = [club for club in clubs]
+    return render_template('index.html', listOfClubs=club)
 
 @app.route('/showSummary', methods=['POST'])
 def showSummary():
@@ -32,9 +33,10 @@ def showSummary():
     
     if matching_clubs:
         club = matching_clubs[0]
-        
+       
         print(clubs)
         print(club)
+        
         return render_template('welcome.html', club=club, competitions=competitions, listOfClubs=clubs)
     else:
         flash("No account related to this email.", 'error')
