@@ -29,10 +29,13 @@ def index():
 def showSummary():
     email = request.form['email']
     matching_clubs = [club for club in clubs if club['email'] == email]
-
+    
     if matching_clubs:
         club = matching_clubs[0]
-        return render_template('welcome.html', club=club, competitions=competitions)
+        
+        print(clubs)
+        print(club)
+        return render_template('welcome.html', club=club, competitions=competitions, listOfClubs=clubs)
     else:
         flash("No account related to this email.", 'error')
         return render_template('index.html'), 401
@@ -74,7 +77,9 @@ def purchasePlaces():
 
 
 # TODO: Add route for points display
-
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
 
 @app.route('/logout')
 def logout():
