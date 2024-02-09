@@ -30,3 +30,5 @@ class TestPointsUpdate:
         result = self.client.get("/")
 
         assert result.status_code == 200
+        expected_points_after = club_points_before - places_booked * 3
+        assert f"<td>{expected_points_after}</td>" in result.data.decode()
