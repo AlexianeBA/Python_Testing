@@ -64,18 +64,21 @@ def purchasePlaces():
     limitReservation = 12
     dateOfCompetition = competition['date']
     dateOfTheDay = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    if placesRequired > numberOfPoints :
-        flash("You don't have enough points!")
-    elif placesRequired > limitReservation:
-        flash("You cannot reserve more than 12 places per competition!")
+    if placesRequired > limitReservation:
+        flash("You cannot reserve more than 12 places per competition!", 'error')
+    elif placesRequired > numberOfPoints :
+        flash("You don't have enough points!", 'error')
     elif dateOfTheDay > dateOfCompetition:
-        flash("You cannot reserve for this competition because the date has passed")
-    
+        flash("You cannot reserve for this competition because the date has passed", 'error')
     else:
         club['points'] = int(numberOfPoints - placesRequired)
         competition['numberOfPlaces'] = int(competition['numberOfPlaces'])
-        flash('Great-booking complete!')
+        flash('Great-booking complete!', 'message')
+    print(competition)
+    print(competitions)
+    print(club)
     return render_template('welcome.html', club=club, competitions=competitions)
+
 
 
 # TODO: Add route for points display
