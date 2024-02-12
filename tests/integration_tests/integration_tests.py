@@ -19,12 +19,12 @@ def test_integration(client):
     assert booking_response.status_code == 200
     assert b"Great-booking complete!" in booking_response.data
 
-    # booking_response_enough_points = client.post(
-    #     "/purchasePlaces",
-    #     data={"competition": "Spring Festival", "club": "Iron Temple", "places": 5},
-    # )
-    # assert booking_response_enough_points.status_code == 200
-    # assert b"You don't have enough points!" in booking_response_enough_points.data
+    booking_response_enough_points = client.post(
+        "/purchasePlaces",
+        data={"competition": "Spring Festival", "club": "Iron Temple", "places": 5},
+    )
+    assert booking_response_enough_points.status_code == 200
+    assert b"You don't have enough points!" in booking_response_enough_points.data
 
     booking_response_past_competition = client.post(
         "/purchasePlaces",

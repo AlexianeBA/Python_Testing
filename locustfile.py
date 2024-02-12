@@ -9,17 +9,24 @@ class WebsiteUser(HttpUser):
         self.client.get("/")
 
     @task
-    def showSummary(self):
-        self.client.post("/showSummary")
-
-    @task
     def purchasePlaces(self):
-        self.client.post("/purchasePlaces")
+        self.client.post(
+            "/purchasePlaces",
+            data={
+                "places": "1",
+                "club": "Simply Lift",
+                "competition": "Spring Festival",
+            },
+        )
 
     @task
     def book(self):
-        self.client.get("/book/Spring Festival/Simply Lift")
+        self.client.get("/book/Spring%20Festival/Iron%20Temple")
 
     @task
     def logout(self):
         self.client.get("/logout")
+
+    @task
+    def login(self):
+        self.client.post("/showSummary", data={"email": "john@simplylift.co"})
