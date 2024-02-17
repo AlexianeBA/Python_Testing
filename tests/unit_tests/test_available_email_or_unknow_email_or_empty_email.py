@@ -11,6 +11,7 @@ class TestAvailableEmailOrUnknowEmail:
     def test_unknow_email(self):
         result = self.client.post("/showSummary", data={"email": "abcd"})
         assert result.status_code == 401
+        assert ('No account related to this email.') in result.data.decode()
         
     def test_empty_email(self):
         result = self.client.post("/showSummary", data={"email": ""})

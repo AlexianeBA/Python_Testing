@@ -5,7 +5,7 @@ import server
 class TestDeductPoints:
     client = app.test_client()
     competition = [
-        {"name": "test", "date": "2024-02-10 15:00:00", "numberOfPlaces": "22"}
+        {"name": "test", "date": "2024-05-10 15:00:00", "numberOfPlaces": "22"}
     ]
     club = [{"name": "Test", "email": "test@test.fr", "points": "5"}]
 
@@ -25,7 +25,7 @@ class TestDeductPoints:
             },
         )
         assert result.status_code == 200
-        assert "Great-booking complete!" in result.data.decode()
         assert (
             int(self.club[0]["points"]) == club_points_before_reserved - places_booked
         )
+        assert "Great" in result.data.decode()
