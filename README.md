@@ -41,10 +41,15 @@ Afin de générer un rapport des couvertures des tests, le module Coverage a ét
 `coverage run -m pytest tests`
 `coverage html`
 
+* Le résultat de ce test est disponible dans la branche https://github.com/AlexianeBA/Python_Testing/tree/Q/A dans le dossier htmlvov et le fichier se nomme index.html.
+
 
 ## Test de performances
 
-Le test de performance est effectué grace à Locust. Pour lancer le serveur de test :
-`locust tests/`
+Le test de performance est effectué grace à Locust. Pour lancer le serveur de test : <br>
+`locust -f locustfile.py`
 
 Se rendre sur l'adresse http://localhost:8089 et entrer les options souhaitées, avec pour 'host' l'adresse par défaut du site (http://127.0.0.1:5000/).
+* Le rapport de ce test se retrouve dans la branche https://github.com/AlexianeBA/Python_Testing/tree/add-Locust dans le fichier se nommant reportlocust.html
+
+
