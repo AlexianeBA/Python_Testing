@@ -26,3 +26,4 @@ class TestMorePointsThanAllowed:
 
         assert result.status_code == 200
         assert int(self.club[0]["points"]) >= 0
+        assert "have enough points" in result.data.decode()

@@ -29,3 +29,4 @@ class TestCompetitionPassed:
         )
     
         assert result.status_code == 200
+        
